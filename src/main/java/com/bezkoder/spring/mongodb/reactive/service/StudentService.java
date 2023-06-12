@@ -55,6 +55,9 @@ public class StudentService {
     return studentRepository.deleteAll();
   }
 
+  public Mono<Student> patchPayment(Student student) {
+    return studentRepository.save(student);
+  }
   public Flux<Student> findAllByClasse(String classeName) {
     return studentRepository.findAllByClasseContaining(classeName);
   }
