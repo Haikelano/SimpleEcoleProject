@@ -22,7 +22,7 @@ public class StudentController {
   }
   @PostMapping("/students")
   @ResponseStatus(HttpStatus.CREATED)
-  public Mono<Student> createTutorial(@RequestBody Student student) {
+  public Mono<Student> createStudent(@RequestBody Student student) {
     return studentService.save(new Student(student.getFirstName(), student.getLastName(), student.getClasse(),
             student.getNote(), student.isPayed(), student.getNotes()));
   }
@@ -37,20 +37,20 @@ public class StudentController {
 
   @GetMapping("/students/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public Mono<Student> getTutorialById(@PathVariable("id") String id) {
+  public Mono<Student> getStudentById(@PathVariable("id") String id) {
     return studentService.findById(id);
   }
 
 
   @PutMapping("/students/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public Mono<Student> updateTutorial(@PathVariable("id") String id, @RequestBody Student tutorial) {
-    return studentService.update(id, tutorial);
+  public Mono<Student> updateStudent(@PathVariable("id") String id, @RequestBody Student student) {
+    return studentService.update(id, student);
   }
 
   @DeleteMapping("/students/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public Mono<Void> deleteTutorial(@PathVariable("id") String id) {
+  public Mono<Void> deleteStudent(@PathVariable("id") String id) {
     return studentService.deleteById(id);
   }
 
