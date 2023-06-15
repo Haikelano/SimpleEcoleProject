@@ -1,5 +1,10 @@
 package com.bezkoder.spring.mongodb.reactive.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,9 +14,12 @@ import com.bezkoder.spring.mongodb.reactive.service.StudentService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.rmi.NotBoundException;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Apis Student", description = "list of apis for manage students")
 public class StudentController {
 
   final
@@ -26,6 +34,10 @@ public class StudentController {
     return studentService.save(new Student(student.getFirstName(), student.getLastName(), student.getClasse(),
             student.getNote(), student.isPayed(), student.getNotes()));
   }
+  @Operation(summary = "All Students",
+          description = "Get All users or search users that have a class name given")
+  @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = Student.class),
+          mediaType = "application/json") })
   @GetMapping("/students")
   @ResponseStatus(HttpStatus.OK)
   public Flux<Student> getAllstudents(@RequestParam(required = false) String classe) {
