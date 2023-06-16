@@ -59,9 +59,8 @@ public class StudentController {
   public Mono<Student> updateStudent(@PathVariable("id") String id, @RequestBody Student student) {
     return studentService.update(id, student);
   }
-
   @DeleteMapping("/students/{id}")
-  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @ResponseStatus(HttpStatus.OK)
   public Mono<Void> deleteStudent(@PathVariable("id") String id) {
     return studentService.deleteById(id);
   }
