@@ -1,5 +1,9 @@
 package com.bezkoder.spring.mongodb.reactive.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +22,11 @@ public class Student {
 
   @Id
   private String id;
+  @NotBlank
+  @Size(min = 3, max = 25)
   private String firstName;
+  @NotBlank
+  @Size(min = 3, max = 25)
   private String lastName;
   private String classe;
   private float note;

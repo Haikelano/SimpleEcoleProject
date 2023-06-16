@@ -8,7 +8,8 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 
 @EnableWebFlux
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "APIs", version = "1.0", description = "Documentation tutorial APIs v1.0"))
+@OpenAPIDefinition(info = @Info(title = "APIs", version = "1.0",
+        description = "Documentation tutorial APIs v1.0"))
 public class SpringBootMongodbReactiveApplication {
 
   public static void main(String[] args) {
